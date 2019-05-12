@@ -1,4 +1,4 @@
-package org.eating.food
+package org.eation.food
 
 import io.micronaut.runtime.Micronaut
 import groovy.transform.CompileStatic

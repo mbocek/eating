@@ -1,4 +1,4 @@
-package org.eating.food
+package org.eation.food
 
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
