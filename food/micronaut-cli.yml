@@ -1,5 +1,0 @@
-profile: service
-defaultPackage: org.eation.food
----
-testFramework: spock
-sourceLanguage: groovy
