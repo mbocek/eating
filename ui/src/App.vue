@@ -11,11 +11,11 @@
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg">
+              <v-icon>person</v-icon>
             </v-list-tile-avatar>
 
             <v-list-tile-content>
-              <v-list-tile-title>John Leider</v-list-tile-title>
+              <v-list-tile-title>{{ user.name }}</v-list-tile-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
@@ -50,19 +50,9 @@
     </v-navigation-drawer>
 
     <v-toolbar fixed app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+      <v-toolbar-title class="headline">
+        <span>Eation</span>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
     </v-toolbar>
 
     <v-content>
@@ -82,8 +72,12 @@ export default {
   data () {
     return {
       drawer: true,
+      user: {
+        name: 'User Name',
+      },
       items: [
-          { title: 'Home', icon: 'dashboard' },
+          { title: 'Home', icon: 'home' },
+          { title: 'Food', icon: 'fastfood' },
           { title: 'About', icon: 'question_answer' }
       ],
       mini: true,
