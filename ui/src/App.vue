@@ -3,72 +3,58 @@
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant.sync="mini"
-      fixed
-      stateless
+      permanent
       app
     >
-      <v-toolbar flat class="transparent">
-        <v-list class="pa-0">
-          <v-list-tile avatar>
-            <v-list-tile-avatar>
-              <v-icon>person</v-icon>
-            </v-list-tile-avatar>
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-icon>person</v-icon>
+        </v-list-item-avatar>
 
-            <v-list-tile-content>
-              <v-list-tile-title>{{ user.name }}</v-list-tile-title>
-            </v-list-tile-content>
+        <v-list-item-title>{{ user.name }}</v-list-item-title>
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+        >
+          <v-icon>chevron_left</v-icon>
+        </v-btn>
+      </v-list-item>
 
-            <v-list-tile-action>
-              <v-btn
-                icon
-                @click.stop="mini = !mini"
-              >
-                <v-icon>chevron_left</v-icon>
-              </v-btn>
-            </v-list-tile-action>
-          </v-list-tile>
-        </v-list>
-      </v-toolbar>
-
-      <v-list class="pt-0" dense>
-        <v-divider></v-divider>
-
-        <v-list-tile
+      <v-divider></v-divider>
+  
+      <v-list dense>
+        <v-list-item
           v-for="item in items"
           :key="item.title"
-          @click="none"
+          :to="item.route"
+          link
         >
-          <v-list-tile-action>
+          <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-tile-action>
+          </v-list-item-icon>
 
-          <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar fixed app>
-      <v-toolbar-title class="headline">
-        <span>Eation</span>
-      </v-toolbar-title>
-    </v-toolbar>
+    <v-app-bar app height="56">
+        <v-toolbar-title class="headline">
+          <span>Eation</span>
+        </v-toolbar-title>
+    </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   data () {
     return {
       drawer: true,
@@ -76,9 +62,9 @@ export default {
         name: 'User Name',
       },
       items: [
-          { title: 'Home', icon: 'home' },
-          { title: 'Food', icon: 'fastfood' },
-          { title: 'About', icon: 'question_answer' }
+          { title: 'Home', icon: 'home', route: '/' },
+          { title: 'Food', icon: 'fastfood', route: 'food' },
+          { title: 'About', icon: 'question_answer', route: 'about' }
       ],
       mini: true,
       right: null
